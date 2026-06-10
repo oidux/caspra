@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel 360° — Hospitality Finance Automation</title>
+<meta name="description" content="Hotel 360° automates the full financial cycle for hospitality groups — from PMS and POS to NetSuite back office. Multi-property, multi-country, AI-enabled. Certified Oracle NetSuite application.">
+<meta property="og:title" content="Hotel 360° — Hospitality Finance Automation">
+<meta property="og:description" content="Close faster. Report in real time. Run every property in one system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-dark-bg:     #1C2820;
+  --color-dark-card:   #243028;
+  --color-green:       #6DC840;
+  --color-green-dark:  #4A9F25;
+  --color-light-bg:    #F4F4F2;
+  --color-white:       #FFFFFF;
+  --color-text-dark:   #111C16;
+  --color-text-muted:  #5C6B62;
+  --color-placeholder: #FFF3B0;
+  --color-placeholder-border: #E0B800;
+
+  --font-family: 'Archivo', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --max-width: 1200px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-family);
+  color: var(--color-text-dark);
+  background: var(--color-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section { padding: 96px 0; }
+
+.eyebrow {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-green-dark);
+  margin-bottom: 14px;
+}
+.dark-section .eyebrow { color: var(--color-green); }
+
+h1, h2, h3 { line-height: 1.2; }
+
+.section-header {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.section-subtext {
+  font-size: 18px;
+  color: var(--color-text-muted);
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.dark-section { background: var(--color-dark-bg); color: var(--color-white); }
+.dark-section .section-subtext { color: rgba(255,255,255,0.75); }
+.light-section { background: var(--color-light-bg); }
+
+a { color: var(--color-green-dark); }
+.dark-section a { color: var(--color-green); }
+
+/* ============ Buttons ============ */
+.btn {
+  display: inline-block;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn-green,
+.dark-section .btn-green {
+  background: var(--color-green);
+  color: var(--color-text-dark);
+}
+.btn-green:hover,
+.dark-section .btn-green:hover { background: var(--color-green-dark); color: var(--color-white); }
+.btn-dark {
+  background: var(--color-dark-bg);
+  color: var(--color-white);
+}
+.btn-dark:hover { background: var(--color-dark-card); }
+.btn-outline-green {
+  background: transparent;
+  color: var(--color-green);
+  border-color: var(--color-green);
+}
+.btn-outline-green:hover { background: rgba(109,200,64,0.12); }
+.btn[disabled], .btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  position: relative;
+}
+.tooltip-wrap { position: relative; display: inline-block; }
+.tooltip-wrap .tooltip {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-dark-card);
+  color: var(--color-white);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  transition: opacity 0.2s;
+  pointer-events: none;
+  border: 1px solid var(--color-green);
+}
+.tooltip-wrap:hover .tooltip { visibility: visible; opacity: 1; }
+
+/* ============ Placeholder treatment ============ */
+.placeholder-block {
+  background: var(--color-placeholder);
+  border: 1.5px dashed var(--color-placeholder-border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  color: var(--color-text-dark);
+}
+.placeholder-block p { font-size: 14px; line-height: 1.5; }
+.placeholder-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9A7000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 6px;
+}
+.placeholder-inline {
+  display: inline-block;
+  background: var(--color-placeholder);
+  border: 1px dashed var(--color-placeholder-border);
+  border-radius: 4px;
+  color: #9A7000;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 1px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+}
+
+/* ============ Header / Nav ============ */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-dark-bg);
+  border-bottom: 2px solid var(--color-green);
+  transition: box-shadow 0.25s;
+}
+#site-header.scrolled { box-shadow: 0 6px 20px rgba(0,0,0,0.35); }
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: 72px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--color-white);
+}
+.brand-wordmark {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+}
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-left: auto;
+}
+.main-nav a {
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.main-nav a:hover { color: var(--color-green); }
+.nav-cta {
+  background: var(--color-green);
+  color: var(--color-text-dark) !important;
+  font-weight: 700 !important;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--color-green-dark); color: var(--color-white) !important; }
+
+#hamburger {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+#hamburger span {
+  display: block;
+  width: 24px;
+  height: 2.5px;
+  background: var(--color-white);
+  margin: 5px 0;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+#hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+#hamburger.open span:nth-child(2) { opacity: 0; }
+#hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* ============ Hero ============ */
+#hero {
+  position: relative;
+  overflow: hidden;
+  padding: 96px 0;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 32px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-decor {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  z-index: 0;
+  pointer-events: none;
+}
+#hero h1 {
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+#hero .hero-sub {
+  font-size: 19px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 28px;
+  max-width: 540px;
+}
+.check-list { list-style: none; margin-bottom: 32px; }
+.check-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 15.5px;
+}
+.check-list svg { flex-shrink: 0; margin-top: 4px; }
+.hero-cta-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+.sub-cta {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+}
+
+/* ============ Problem cards ============ */
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.problem-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(17,28,22,0.05);
+}
+.problem-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.problem-card p { color: var(--color-text-muted); font-size: 15px; }
+
+/* ============ Outcomes / Stats ============ */
+.stats-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-green);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 16px;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 32px 0 56px;
+}
+.stat-card {
+  background: var(--color-dark-card);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  border-top: 3px solid var(--color-green);
+}
+.stat-card .stat-value {
+  font-size: 42px;
+  font-weight: 800;
+  color: var(--color-green);
+  line-height: 1.1;
+}
+.stat-card .stat-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 8px 0 6px;
+}
+.stat-card .stat-desc {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.65);
+}
+.testimonials-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.testimonial-card {
+  background: var(--color-dark-card);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.testimonial-card blockquote {
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.9);
+}
+.testimonial-card .attribution {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-green);
+}
+.testimonial-card .case-link {
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+.testimonial-card .case-link:hover { text-decoration: underline; }
+.logo-strip {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+.logo-ph {
+  background: var(--color-placeholder);
+  border: 1.5px dashed var(--color-placeholder-border);
+  border-radius: var(--radius-sm);
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #9A7000;
+}
+
+/* ============ How it works ============ */
+.badge-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.badge {
+  border: 1.5px solid var(--color-green);
+  color: var(--color-text-dark);
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 7px 18px;
+  border-radius: 20px;
+  background: var(--color-white);
+}
+.arch-diagram {
+  display: grid;
+  grid-template-columns: 1fr auto 1.2fr auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
+.arch-box {
+  background: var(--color-dark-card);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+}
+.arch-box.highlight { border: 2px solid var(--color-green); }
+.arch-box h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-green);
+}
+.arch-box ul { list-style: none; }
+.arch-box li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  padding: 3px 0;
+}
+.arch-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--color-green);
+  animation: arrow-pulse 1.4s ease-in-out infinite;
+}
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.35; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(6px); }
+}
+
+/* ============ Capabilities ============ */
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.cap-card {
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  padding: 32px 28px;
+  box-shadow: 0 2px 10px rgba(17,28,22,0.05);
+}
+.cap-card .cap-icon { margin-bottom: 16px; }
+.cap-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.cap-card p { font-size: 14.5px; color: var(--color-text-muted); }
+
+/* ============ Segments ============ */
+.segment-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+.segment-card {
+  background: var(--color-dark-card);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.segment-card h3 { font-size: 18px; font-weight: 700; }
+.segment-card p { font-size: 14px; color: rgba(255,255,255,0.78); }
+.segment-badge {
+  align-self: flex-start;
+  background: var(--color-green);
+  color: var(--color-text-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.oracle-callout {
+  background: var(--color-dark-card);
+  border-left: 4px solid var(--color-green);
+  border-radius: var(--radius-sm);
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+.oracle-callout strong { color: var(--color-green); display: block; margin-bottom: 6px; font-size: 17px; }
+.oracle-callout p { font-size: 15px; color: rgba(255,255,255,0.8); }
+
+/* ============ Comparison table ============ */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(17,28,22,0.06);
+  font-size: 15px;
+}
+.compare-table th {
+  background: var(--color-dark-bg);
+  color: var(--color-white);
+  text-align: left;
+  padding: 16px 20px;
+  font-weight: 700;
+}
+.compare-table th:last-child { color: var(--color-green); }
+.compare-table td { padding: 14px 20px; }
+.compare-table tbody tr:nth-child(odd) { background: var(--color-white); }
+.compare-table tbody tr:nth-child(even) { background: var(--color-light-bg); }
+.compare-table tbody tr { transition: background 0.15s; }
+.compare-table tbody tr:hover { background: #E8F4DF; }
+.compare-table td.feature { font-weight: 600; }
+.compare-table .dash { color: var(--color-text-muted); }
+.check-icon { vertical-align: middle; margin-right: 6px; }
+.table-scroll { overflow-x: auto; }
+
+/* ============ FAQ ============ */
+.faq-list { max-width: 860px; margin: 0 auto; }
+.faq-item {
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+  box-shadow: 0 1px 6px rgba(17,28,22,0.05);
+  overflow: hidden;
+}
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-align: left;
+  padding: 18px 22px;
+  cursor: pointer;
+}
+.faq-icon {
+  flex-shrink: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-green);
+  line-height: 1;
+  width: 22px;
+  text-align: center;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-answer-inner {
+  padding: 0 22px 20px;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+.faq-answer-inner .placeholder-block { margin-top: 10px; }
+
+/* ============ Final CTA ============ */
+#get-started {
+  background: var(--color-green);
+  color: var(--color-text-dark);
+  text-align: center;
+}
+#get-started h2 {
+  font-size: 38px;
+  font-weight: 800;
+  max-width: 760px;
+  margin: 0 auto 18px;
+}
+#get-started .cta-body {
+  font-size: 17px;
+  max-width: 640px;
+  margin: 0 auto 32px;
+}
+#get-started .sub-cta {
+  color: rgba(17,28,22,0.75);
+  font-size: 14.5px;
+  max-width: 560px;
+  margin: 18px auto 0;
+}
+#get-started .secondary-link {
+  display: inline-block;
+  margin-top: 24px;
+  color: var(--color-text-dark);
+  font-weight: 600;
+}
+
+/* ============ Footer ============ */
+footer {
+  background: var(--color-dark-bg);
+  color: rgba(255,255,255,0.8);
+  padding: 64px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+.footer-grid h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+.footer-grid ul { list-style: none; }
+.footer-grid li { margin-bottom: 8px; }
+.footer-grid a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 14.5px;
+}
+.footer-grid a:hover { color: var(--color-green); }
+.footer-tagline {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  margin-top: 14px;
+  font-style: italic;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 24px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* ============ Responsive ============ */
+@media (max-width: 768px) {
+  section { padding: 56px 0; }
+  .section-header { font-size: 28px; }
+
+  #hamburger { display: block; }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    background: var(--color-dark-bg);
+    border-bottom: 2px solid var(--color-green);
+    padding: 12px 24px 20px;
+  }
+  .main-nav.open { display: flex; }
+  .main-nav a { padding: 12px 0; width: 100%; }
+  .main-nav .nav-cta { text-align: center; margin-top: 8px; padding: 12px 20px; }
+
+  #hero { padding: 56px 0; }
+  #hero h1 { font-size: 34px; }
+  .hero-grid { grid-template-columns: 1fr; }
+
+  .card-grid-2 { grid-template-columns: 1fr; }
+
+  .stats-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .stats-row .stat-card { min-width: 230px; flex-shrink: 0; }
+
+  .testimonials-row {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 12px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .testimonials-row .testimonial-card { min-width: 280px; flex-shrink: 0; }
+
+  .arch-diagram { grid-template-columns: 1fr; }
+  .arch-arrow { transform: rotate(90deg); padding: 4px 0; }
+  @keyframes arrow-pulse {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+
+  .cap-grid { grid-template-columns: 1fr; }
+  .segment-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  #get-started h2 { font-size: 28px; }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cap-grid { grid-template-columns: repeat(2, 1fr); }
+  .segment-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .testimonials-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="container header-inner">
+    <a href="#hero" class="brand" aria-label="Hotel 360°">
+      <!-- Logo Hotel 360°: círculo + wordmark -->
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" stroke="#6DC840" stroke-width="2.5"/>
+        <circle cx="18" cy="18" r="9" stroke="#6DC840" stroke-width="2.5" stroke-dasharray="4 3"/>
+        <circle cx="18" cy="18" r="3" fill="#6DC840"/>
+      </svg>
+      <span class="brand-wordmark">Hotel 360°</span>
+    </a>
+    <button id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="main-nav" id="main-nav">
+      <a href="#capabilities">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#outcomes">Customers</a>
+      <a href="#faq">FAQ</a>
+      <a href="#get-started" class="nav-cta">Request a Demo</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="dark-section">
+  <svg class="hero-decor" width="520" height="520" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <circle cx="340" cy="180" r="170" stroke="#6DC840" stroke-width="2" stroke-dasharray="10 8" opacity="0.15"/>
+    <circle cx="340" cy="180" r="110" stroke="#6DC840" stroke-width="2" stroke-dasharray="6 6" opacity="0.15"/>
+  </svg>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <h1>Close faster. Report in real time. Run every property in one system.</h1>
+        <p class="hero-sub">Hotel 360° automates the full financial cycle — from PMS and POS to the back office — for hospitality portfolios of any size.</p>
+        <ul class="check-list">
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Real-time visibility across every property</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated reconciliation, every day</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-property, multi-entity, multi-country, multi-currency</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>PMS, POS, and ERP in one platform</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>AI-enabled, human-led</li>
+        </ul>
+        <div class="hero-cta-row">
+          <a href="#get-started" class="btn btn-green">Request a Demo</a>
+          <span class="sub-cta">30-minute walkthrough tailored to your needs</span>
+        </div>
+      </div>
+      <div><!-- coluna decorativa (SVG de fundo posicionado na seção) --></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROBLEM ================= -->
+<section id="problem" class="light-section">
+  <div class="container">
+    <span class="eyebrow">The problem</span>
+    <h2 class="section-header">Where hospitality finance breaks down</h2>
+    <div class="card-grid-2">
+      <div class="problem-card">
+        <h3>Fragmented systems</h3>
+        <p>PMS, POS, and back-office systems each hold a piece of the truth — and none of them talk to each other. Finance reconciles by hand what should already be in the GL.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Month-end close overhead</h3>
+        <p>Accruals, intercompany postings, and reconciliations still depend on manual steps. A 10-day close is not a resourcing problem — it's an automation gap.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Delayed financial insights</h3>
+        <p>When reporting runs weeks behind operations, owners decide from the past. In a market that moves on RevPAR and ADR daily, that delay costs real money.</p>
+      </div>
+      <div class="problem-card">
+        <h3>Slow adoption to new tech</h3>
+        <p>Every new property or country means rebuilding from scratch. Rigid architectures turn growth into IT projects — right when the business should accelerate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUTCOMES ================= -->
+<section id="outcomes" class="dark-section">
+  <div class="container">
+    <span class="eyebrow">Customer outcomes</span>
+    <h2 class="section-header">What Hotel 360° customers achieve</h2>
+    <p class="stats-label">Measured across our installed customer base — not projections.</p>
+
+    <div class="placeholder-block">
+      <span class="placeholder-label">⚠ Pendente de aprovação</span>
+      <p>[PLACEHOLDER — Source/methodology for the four statistics below — confirm with product owner. Suggested phrasing: "Based on outcomes measured across [N] customer implementations between [year] and [year]. Methodology and full benchmark data available on request."]</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">80%</div>
+        <div class="stat-title">Faster month-end close</div>
+        <div class="stat-desc">From ~10 days to under 2 days. <span class="placeholder-inline">Source TBD</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">99%</div>
+        <div class="stat-title">Transaction automation</div>
+        <div class="stat-desc">Across the revenue cycle. <span class="placeholder-inline">Source TBD</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">Daily</div>
+        <div class="stat-title">Automated reconciliation</div>
+        <div class="stat-desc">Replaces monthly manual matching. <span class="placeholder-inline">Source TBD</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">14&nbsp;mo</div>
+        <div class="stat-title">Average payback period</div>
+        <div class="stat-desc">Based on customer implementations. <span class="placeholder-inline">Source TBD</span></div>
+      </div>
+    </div>
+
+    <div class="testimonials-row">
+      <div class="testimonial-card">
+        <blockquote>"Hotel 360° gives us the financial controls we needed as we scale across markets. What used to take our finance team most of the month now happens automatically — and we can see performance across every property the same day it occurs."</blockquote>
+        <div class="attribution">— Alejandro Vidales, CIO, OKU Hotels</div>
+        <a href="#" class="case-link">Read the OKU Hotels case study →</a>
+      </div>
+      <div class="testimonial-card">
+        <div class="placeholder-block">
+          <span class="placeholder-label">⚠ Pendente de aprovação</span>
+          <p>[PLACEHOLDER — Customer testimonial from Lamaro Hotel. 2–3 sentences, measurable outcome (close-cycle reduction, time saved, multi-property onboarding speed). Include a number in the quote.]</p>
+        </div>
+        <div class="placeholder-block">
+          <span class="placeholder-label">⚠ Pendente de aprovação</span>
+          <p>[PLACEHOLDER — Name, Title, Lamaro Hotel]</p>
+        </div>
+        <a href="#" class="case-link">Read the Lamaro Hotel case study →</a>
+      </div>
+      <div class="testimonial-card">
+        <div class="placeholder-block">
+          <span class="placeholder-label">⚠ Pendente de aprovação</span>
+          <p>[PLACEHOLDER — Customer testimonial from Engage Management Hospitality. 2–3 sentences. Cite a specific KPI improvement.]</p>
+        </div>
+        <div class="placeholder-block">
+          <span class="placeholder-label">⚠ Pendente de aprovação</span>
+          <p>[PLACEHOLDER — Name, Title, Engage Management Hospitality]</p>
+        </div>
+        <a href="#" class="case-link">Read the Engage case study →</a>
+      </div>
+    </div>
+
+    <div class="placeholder-block">
+      <span class="placeholder-label">⚠ Pendente de aprovação</span>
+      <p>[PLACEHOLDER — Customer logo banner: uMusic · Roundhill · Flathead Lake · Hotel Colón — aguardando aprovação de logos. Renderizado como placeholders com nomes em texto por ora.]</p>
+    </div>
+    <div class="logo-strip">
+      <span class="logo-ph">uMusic</span>
+      <span class="logo-ph">Roundhill</span>
+      <span class="logo-ph">Flathead Lake</span>
+      <span class="logo-ph">Hotel Colón</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how-it-works" class="light-section">
+  <div class="container">
+    <span class="eyebrow">How it works</span>
+    <h2 class="section-header">Automate Finance. Focus on Growth.</h2>
+    <p class="section-subtext">Hotel 360° connects your front-end systems directly into NetSuite — replacing the manual layer with continuous, automated data flows.</p>
+    <div class="badge-row">
+      <span class="badge">Certified Oracle Application</span>
+      <span class="badge">No Custom Code</span>
+      <span class="badge">Plug &amp; Play</span>
+      <span class="badge">Ready to Go</span>
+    </div>
+    <div class="arch-diagram">
+      <div class="arch-box">
+        <h3>Multi PMS &amp; POS</h3>
+        <ul>
+          <li>Opera</li>
+          <li>Simphony</li>
+          <li>Others</li>
+        </ul>
+      </div>
+      <div class="arch-arrow" aria-hidden="true">→</div>
+      <div class="arch-box highlight">
+        <h3>Hotel 360°</h3>
+        <ul>
+          <li>Hospitality Layer</li>
+          <li>USALI Business Rules</li>
+          <li>Reporting Engine</li>
+          <li>AI Tech Stack</li>
+        </ul>
+      </div>
+      <div class="arch-arrow" aria-hidden="true">→</div>
+      <div class="arch-box">
+        <h3>NetSuite</h3>
+        <ul>
+          <li>GL · AP · AR</li>
+          <li>Taxes · Assets</li>
+          <li>Inventory</li>
+          <li>Procurement · …</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CAPABILITIES ================= -->
+<section id="capabilities" class="light-section" style="padding-top: 0;">
+  <div class="container">
+    <span class="eyebrow">Capabilities</span>
+    <h2 class="section-header">What Hotel 360° delivers</h2>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- setas circulares -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M33 20a13 13 0 0 1-22.2 9.2"/><path d="M7 20a13 13 0 0 1 22.2-9.2"/>
+            <path d="M29 6v5h-5"/><path d="M11 34v-5h5"/>
+          </svg>
+        </div>
+        <h3>Automated revenue cycle</h3>
+        <p>Every PMS and POS transaction flows directly into the general ledger. No manual data entry, across the entire portfolio.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- gráfico -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6v28h28"/><path d="M12 26l7-8 6 5 8-11"/>
+          </svg>
+        </div>
+        <h3>Real-time hospitality data</h3>
+        <p>Financial and operational data the moment transactions occur, with built-in industry metrics and dashboards. No month-end lead times.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- hotel -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="6" width="24" height="28" rx="2"/>
+            <path d="M14 12h4M22 12h4M14 18h4M22 18h4M14 24h4M22 24h4"/>
+            <path d="M17 34v-5h6v5"/>
+          </svg>
+        </div>
+        <h3>Guest journey and city ledger</h3>
+        <p>A complete financial view of each guest — invoices, payments, deposits, receivables — all in NetSuite, with City Ledger control over collections and dunning.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- clipboard -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="8" width="22" height="27" rx="2"/>
+            <path d="M15 8a5 5 0 0 1 10 0"/>
+            <path d="M14 17h12M14 22h12M14 27h8"/>
+          </svg>
+        </div>
+        <h3>Scalable USALI finance model</h3>
+        <p>USALI v12 reporting applied automatically to every property — ADR, RevPAR, occupancy, and full financial statements with drill-down. Onboard new properties faster.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- AI -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="12" width="24" height="18" rx="4"/>
+            <circle cx="15.5" cy="21" r="2"/><circle cx="24.5" cy="21" r="2"/>
+            <path d="M20 12V7"/><circle cx="20" cy="5.5" r="1.5"/>
+            <path d="M14 26h12"/>
+          </svg>
+        </div>
+        <h3>AI-enabled, human-led</h3>
+        <p>Built-in AI agents automate transactional tasks — with humans in control — freeing your team for higher-value work.</p>
+      </div>
+      <div class="cap-card">
+        <div class="cap-icon">
+          <!-- globo -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="20" r="14"/>
+            <ellipse cx="20" cy="20" rx="6.5" ry="14"/>
+            <path d="M6 20h28M8.5 13h23M8.5 27h23"/>
+          </svg>
+        </div>
+        <h3>The Multis</h3>
+        <p>Multi-property · Multi-entity · Multi-country · Multi-currency. Local tax formats and e-invoicing mandates, built into one platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SEGMENTS ================= -->
+<section id="segments" class="dark-section">
+  <div class="container">
+    <span class="eyebrow">Market segments</span>
+    <h2 class="section-header">Built for your market segment</h2>
+    <p class="section-subtext">From single-property businesses to large hospitality groups operating across multiple jurisdictions.</p>
+    <div class="segment-grid">
+      <div class="segment-card">
+        <span class="segment-badge">#HotelInABox</span>
+        <h3>Starter Packs</h3>
+        <p>Enterprise-grade features for independent properties and small multi-property setups, at a subsidized budget. <a href="#hotel-in-a-box">Hotel in a Box framework</a></p>
+      </div>
+      <div class="segment-card">
+        <h3>Mid-Market</h3>
+        <p>A flexible application stack for growing hotel groups — tailored to your roadmap, with industry-specific capabilities for standardization and control.</p>
+      </div>
+      <div class="segment-card">
+        <h3>Enterprise</h3>
+        <p>Multi-phased initiatives for larger brands and global engagements, delivered in an advisory consulting model with a productized focus.</p>
+      </div>
+      <div class="segment-card">
+        <h3>Specialized Add-Ons</h3>
+        <p>Beyond the hotel space: <a href="#">Restaurant 360°</a> for F&amp;B, <a href="#">Franchisor 360°</a> for franchise models, and <a href="#">Aurelia</a> — the AI-enabled services framework with MCP and agentic capabilities.</p>
+      </div>
+    </div>
+    <div class="oracle-callout">
+      <strong>Built in the Oracle stack</strong>
+      <p>Delivered by a certified NetSuite Alliance Partner, with certified IP built into the Oracle tech stack and a proven implementation methodology.</p>
+    </div>
+    <div class="tooltip-wrap">
+      <button class="btn btn-outline-green" disabled>Investment calculator</button>
+      <span class="tooltip">Coming soon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARISON ================= -->
+<section id="compare" class="light-section">
+  <div class="container">
+    <span class="eyebrow">Comparison</span>
+    <h2 class="section-header">Hotel 360° vs. a generic NetSuite implementation</h2>
+    <p class="section-subtext">A standard NetSuite deployment is a blank canvas. Hotel 360° ships with hospitality already built in.</p>
+    <div class="table-scroll">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Generic NetSuite</th>
+            <th>Hotel 360°</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="feature">Pre-built PMS/POS integrations</td>
+            <td>Build from scratch</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Oracle OPERA + Simphony out of box</td>
+          </tr>
+          <tr>
+            <td class="feature">USALI v12 reporting</td>
+            <td>Manual configuration</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated, built-in</td>
+          </tr>
+          <tr>
+            <td class="feature">Hospitality financial workflows</td>
+            <td>Custom build required</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Pre-configured at deployment</td>
+          </tr>
+          <tr>
+            <td class="feature">Multi-property consolidation</td>
+            <td>Custom development</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Native, automated</td>
+          </tr>
+          <tr>
+            <td class="feature">AI-ready data layer</td>
+            <td>Requires custom setup</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Pre-built agents, ready to train</td>
+          </tr>
+          <tr>
+            <td class="feature">Daily automated reconciliation</td>
+            <td>Manual process</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated across property tech stack</td>
+          </tr>
+          <tr>
+            <td class="feature">Go-live timeline</td>
+            <td>9–12 months typical</td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>3–6 months typical</td>
+          </tr>
+          <tr>
+            <td class="feature">Active product roadmap</td>
+            <td><span class="dash">—</span></td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>New features to installed base</td>
+          </tr>
+          <tr>
+            <td class="feature">Industry expert support</td>
+            <td><span class="dash">—</span></td>
+            <td><svg class="check-icon" width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9.5L7 13.5L15 4.5" stroke="#6DC840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Ongoing optimization</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="placeholder-block">
+      <span class="placeholder-label">⚠ Pendente de aprovação</span>
+      <p>[PLACEHOLDER — Confirmar com product owner: (1) timing claim "3–6 months vs. 9–12 months" está aprovado para publicação? (2) Podemos nomear produtos concorrentes (SAP Hospitality, Sage Intacct, Workday) para comparison content direto?]</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section id="faq" class="light-section" style="padding-top: 0;">
+  <div class="container">
+    <span class="eyebrow" style="text-align:center;">FAQ</span>
+    <h2 class="section-header" style="text-align:center;">Everything you need to know</h2>
+    <div class="faq-list" style="margin-top: 40px;">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What is Hotel 360°?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hotel 360° is a certified Oracle NetSuite application purpose-built for hospitality groups. It automates the full financial cycle — from PMS to POS transactions and into the back office GL reporting layer — supporting multi-property, multi-country portfolios. It ships with pre-built integrations, a USALI v12 reporting framework, hospitality-specific workflows, and a business consolidation logic that supports unique industry requirements.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How does Hotel 360° differ from a generic ERP implementation?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>A generic ERP deployment is a blank canvas. Hotel 360° ships with pre-built integrations, USALI v12 reporting, hospitality workflows, and multi-property consolidation already in place — so you go live with a system designed for your industry, not one you have to build from scratch. Typical implementation ranges from 3–6 months versus 9 to 12 months for custom build models.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How does Hotel 360° improve month-end close and financial reporting?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hotel 360° automates transaction processing and reconciliation so that data from front-of-house systems lands in the general ledger automatically, every day. Customers reduce close cycles from approximately 10 days to 2 days and move from monthly manual reconciliation to daily automated matching, with real-time reporting available continuously.</p>
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — Source for close-cycle reduction figures — confirm with product owner.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Can Hotel 360° support multi-property and multi-entity hotel groups?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Hotel 360° is designed for this environment. It supports subsidiaries, multiple locations, and multi-hotel portfolios within a single NetSuite instance — with standardized processes, automated consolidation, and consistent USALI v12 reporting across all properties. Adding a new property does not require rebuilding the integration.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Which PMS and POS systems does Hotel 360° integrate with?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hotel 360° integrates natively with Oracle OPERA (PMS) and Oracle Simphony (POS), connecting bookings, revenue postings, guest invoices, payments, and receivables directly to NetSuite without manual intervention. Additional integrations with other hospitality applications are available on request.</p>
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — Confirm full list of supported PMS/POS systems: Mews (in development, summer 2026), Cloudbeds, Protel, Stayntouch, Toast.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Which countries and markets does Hotel 360° support?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hotel 360° supports hotel groups operating across North America, Latin America, Europe, and beyond. The platform handles local tax formats, multi-currency posting, and country-specific compliance requirements within the same NetSuite environment.</p>
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — Confirm full country coverage list. Naming specific countries (Mexico, Spain, Italy, France, Brazil, USA) improves GEO coverage.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Does Hotel 360° handle e-invoicing compliance?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Hotel 360° supports country-specific e-invoicing mandates and integrates the relevant local frameworks within NetSuite.</p>
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — List specific e-invoicing frameworks: Mexico CFDI, Italy SDI, Spain Verifactu, France Factur-X, Brazil NF-e, Portugal SAFT.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How does Hotel 360° support USALI v12 reporting?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>USALI (Uniform System of Accounts for the Lodging Industry, v12) is the global standard for hospitality financial reporting. Hotel 360° applies USALI segmentation automatically to every transaction, producing standardized reports — from departmental P&amp;Ls to full financial statements — without manual mapping at month-end.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What financial and operational outcomes can a CFO expect?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>CFOs report improved financial visibility, faster close cycles, reduced operational risk, and more time for their teams to focus on analysis. Measured outcomes include 80% reduction in close cycle times, 99%+ transaction automation rates, daily system-driven reconciliation, and payback periods averaging 12–18 months.</p>
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — Source and methodology for all four numbers — confirm with product owner.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What does implementation look like and how long does it take?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Implementation is led by our team of hospitality experts who are also certified in the Oracle NetSuite tech stack, using a structured methodology built with industry best practices. Timelines vary depending on customer requirements, but projects typically go live within a 3–6 month horizon.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item" id="hotel-in-a-box">
+        <button class="faq-question" aria-expanded="false">Is Hotel 360° suitable for small or single-property hotels?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. The Hotel 360° Starter Pack (#HotelInABox) gives independent properties and smaller multi-property operators access to enterprise-grade features at a subsidized budget, leveraging our best-practice implementation guidelines. From startup to global scale, customers can gain access to the tool's efficiencies and win a competitive edge.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How does Hotel 360° handle the guest journey and city ledger?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Hotel 360° maintains a complete financial view of guest operations — from charges, invoices, payments, deposits, and receivables — all within NetSuite. City Ledger tracking functionality supports cash-flow optimization across travel agency collections, corporate accounts, and improved dunning cycles.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">What AI capabilities does Hotel 360° include?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Aurelia is the built-in AI tech stack in Hotel 360°, automating transactional tasks with humans at the center for proper controls. The platform supports secure MCP (Model Context Protocol) connections, agentic workflows, and other AI services. Customers train their AI agents to handle repetitive back-office work, freeing teams for strategic advisory roles. <a href="#">Learn more about Aurelia →</a></p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Is Hotel 360° certified by Oracle?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. Hotel 360° is a certified Oracle NetSuite application built and delivered by a certified NetSuite Alliance Partner. The IP is built into the Oracle tech stack — no custom code is required to implement its feature set.</p>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">How is Hotel 360° priced?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <div class="placeholder-block">
+            <span class="placeholder-label">⚠ Pendente de aprovação</span>
+            <p>[PLACEHOLDER — Confirm and name the pricing model (per property, per user, modular, etc.) for GEO clarity.]</p>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">Can Hotel 360° support other hospitality business models?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">
+          <p>Yes. The Franchisor 360° add-on module is purpose-built for franchise business models, supporting franchisor–franchisee financial flows, royalty calculations, and consolidated reporting across the franchise portfolio. Restaurant 360° is specifically designed for restaurant, bar, and F&amp;B retail operations, for full control and financial tracking into NetSuite.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section id="get-started">
+  <div class="container">
+    <h2>Take control of financial performance across every property.</h2>
+    <p class="cta-body">Join leading hospitality groups across the US, Europe, and Latin America. Our team typically responds within one business day.</p>
+    <a href="#" class="btn btn-dark">Request a Demo</a>
+    <p class="sub-cta">A 30-minute session tailored to your markets — integration architecture, financial workflows, and expected outcomes. No commitment required.</p>
+    <a href="#" class="secondary-link">Prefer to read first? Download the Hotel 360° product brief →</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#hero" class="brand" aria-label="Hotel 360°">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="18" cy="18" r="16" stroke="#6DC840" stroke-width="2.5"/>
+            <circle cx="18" cy="18" r="9" stroke="#6DC840" stroke-width="2.5" stroke-dasharray="4 3"/>
+            <circle cx="18" cy="18" r="3" fill="#6DC840"/>
+          </svg>
+          <span class="brand-wordmark">Hotel 360°</span>
+        </a>
+        <p class="footer-tagline">Hospitality finance automation, built on Oracle NetSuite.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#hero">Hotel 360°</a></li>
+          <li><a href="#">Restaurant 360°</a></li>
+          <li><a href="#">Franchisor 360°</a></li>
+          <li><a href="#">Aurelia</a></li>
+          <li><a href="#hotel-in-a-box">Hotel in a Box</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Blog / Community</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#get-started">Request a Demo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Hotel 360°. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+// ===== Sticky nav: shadow após 80px de scroll =====
+var header = document.getElementById('site-header');
+window.addEventListener('scroll', function () {
+  header.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+// ===== Hamburger menu (mobile) =====
+var hamburger = document.getElementById('hamburger');
+var mainNav = document.getElementById('main-nav');
+hamburger.addEventListener('click', function () {
+  var open = mainNav.classList.toggle('open');
+  hamburger.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', open);
+});
+// Fecha o menu mobile ao clicar em um link
+mainNav.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    mainNav.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// ===== FAQ accordion: apenas 1 aberto por vez =====
+var faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(function (item) {
+  var question = item.querySelector('.faq-question');
+  var answer = item.querySelector('.faq-answer');
+  var icon = item.querySelector('.faq-icon');
+
+  question.addEventListener('click', function () {
+    var isOpen = question.getAttribute('aria-expanded') === 'true';
+
+    // Fecha todos
+    faqItems.forEach(function (other) {
+      other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      other.querySelector('.faq-answer').style.maxHeight = null;
+      other.querySelector('.faq-icon').textContent = '+';
+    });
+
+    // Abre o clicado (se estava fechado)
+    if (!isOpen) {
+      question.setAttribute('aria-expanded', 'true');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+      icon.textContent = '−';
+    }
+  });
+});
+</script>
+</body>
+</html>
