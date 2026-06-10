@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caspra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Archivo', sans-serif;
+  background: #070907;
+  color: #E8EAE8;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.link-btn {
+  display: block;
+  background: #0E120E;
+  color: #E8EAE8;
+  border: 1px solid #1E261F;
+  border-radius: 12px;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+}
+
+.link-btn:hover {
+  background: #141B14;
+  border-color: #6DC840;
+  color: #6DC840;
+  transform: translateY(-2px);
+}
+
+/* Links ainda sem destino: hover mostra "Coming soon" */
+.link-btn.soon {
+  position: relative;
+  cursor: default;
+}
+.link-btn.soon:hover {
+  background: #0E120E;
+  border-color: #1E261F;
+  color: #5C6B62;
+  transform: none;
+}
+.link-btn.soon::after {
+  content: 'Coming soon';
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: #141B14;
+  border: 1px solid #6DC840;
+  color: #6DC840;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+.link-btn.soon:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Caspra</h1>
+    <div class="links">
+      <!-- Atualizar os href com as URLs finais de cada site -->
+      <a class="link-btn" href="https://oidux.github.io/caspra/hotel360.html">Hotel 360°</a>
+      <a class="link-btn soon" href="#" onclick="return false;">LatamTax</a>
+      <a class="link-btn soon" href="#" onclick="return false;">HC360</a>
+    </div>
+  </div>
+</body>
+</html>
